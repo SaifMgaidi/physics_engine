@@ -6,7 +6,7 @@ OBJ_DIR = ./obj
 
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -I$(INC_DIR)
 LFLAGS = -lX11
 
 RM = rm -rf
