@@ -13,7 +13,7 @@ RM = rm -rf
 
 
 SRC =	$(SRC_DIR)/main.cpp \
-		$(SRC_DIR)/WINDOW.cpp
+		$(SRC_DIR)/MyWindow.cpp
 
 OBJ =	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

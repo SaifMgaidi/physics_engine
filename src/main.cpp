@@ -1,10 +1,10 @@
-#include "../inc/WINDOW.hpp"
+#include "../inc/MyWindow.hpp"
 
 int	main(void)
 {
 	try
 	{
-		WINDOW	win(500, 500);
+		MyWindow	win(500, 500);
 		win.run();
 	}
 	catch(const std::exception& e)

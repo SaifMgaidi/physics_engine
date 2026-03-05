@@ -1,8 +1,8 @@
-#include "../inc/WINDOW.hpp"
+#include "../inc/MyWindow.hpp"
 
 // ---------------------Constructor-----------------------------------
 
-WINDOW::WINDOW(int w, int h)
+MyWindow::MyWindow(int w, int h)
 :	width_(w), height_(h)
 {
 	dpy_ = XOpenDisplay(NULL);
@@ -46,7 +46,7 @@ WINDOW::WINDOW(int w, int h)
 
 // ---------------------Destructor-----------------------------------
 
-WINDOW::~WINDOW()
+MyWindow::~MyWindow()
 {
 	if (dpy_)
 	{
@@ -61,12 +61,12 @@ WINDOW::~WINDOW()
 
 // ---------------------Member Functions-----------------------------------
 
-void	WINDOW::clear(void)
+void	MyWindow::clear(void)
 {
 	memset(pixels_, 0, width_ * height_ * sizeof(u_int32_t));
 }
 
-void	WINDOW::display(void)
+void	MyWindow::display(void)
 {
 	int		x = width_ / 2;
 	int		y = height_ / 2;
@@ -77,7 +77,7 @@ void	WINDOW::display(void)
 	XPutImage(dpy_, win_, GC_, img, 0, 0, 0, 0, width_, height_);
 }
 
-void	WINDOW::run(void)
+void	MyWindow::run(void)
 {
 	XEvent	event;
 	KeySym	key;

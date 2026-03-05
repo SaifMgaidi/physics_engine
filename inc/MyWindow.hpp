@@ -1,5 +1,5 @@
-#ifndef WINDOW_HPP
-# define WINDOW_HPP
+#ifndef MYWINDOW_HPP
+# define MYWINDOW_HPP
 
 #include <iostream>
 #include <stdint.h>
@@ -8,14 +8,14 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 
-class WINDOW
+class MyWindow
 {
 public:
 	// Constructor
-	WINDOW(int w, int h);
+	MyWindow(int w, int h);
 
 	// Destructor
-	~WINDOW();
+	~MyWindow();
 
 	// Member Functions
 	void		clear(void);
