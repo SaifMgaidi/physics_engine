@@ -1,12 +1,14 @@
 #include "../inc/Rect.hpp"
 
-Rect::Rect()
-:	Shape()
+//-------------------Constructor---------------------------------
+
+Rect::Rect(RenderContext& ctx)
+:	Shape(ctx)
 {
 }
 
-Rect::Rect(float x, float y, float vx, float vy, float width, float height, unsigned int color)
-:	Shape(x, y, vx, vy, width, height, color)
+Rect::Rect(RenderContext& ctx, float x, float y, float vx, float vy, float width, float height, unsigned int color)
+:	Shape(ctx, x, y, vx, vy, width, height, color)
 {
 }
 
@@ -22,12 +24,17 @@ Rect& Rect::operator=(const Rect& other)
 	return (*this);
 }
 
+
+//-------------------Destructor---------------------------------
+
 Rect::~Rect()
 {
 }
 
 
+
+//-------------------Member Functions---------------------------------
+
 void	Rect::draw() const
 {
-	
 }

@@ -2,18 +2,20 @@
 
 //---------------Constructor-----------------------
 
-Shape::Shape()
-:   pos_(), velocity_(), width_(0.0f), height_(0.0f), color_(0)
+Shape::Shape(RenderContext& ctx)
+:	ctx_(ctx), pos_(), velocity_(),
+	width_(0.0f), height_(0.0f), color_(0)
 {
 }
 
-Shape::Shape(float x, float y, float vx, float vy, float width, float height, uint32_t color)
-:   pos_(x, y), velocity_(vx, vy), width_(width), height_(height), color_(color)
+Shape::Shape(RenderContext& ctx, float x, float y, float vx,
+			float vy, float width, float height, uint32_t color)
+:   ctx_(ctx), pos_(x, y), velocity_(vx, vy), width_(width), height_(height), color_(color)
 {
 }
 
 Shape::Shape(const Shape& other)
-:   pos_(other.pos_), velocity_(other.velocity_), width_(other.width_),
+:   ctx_(other.ctx_), pos_(other.pos_), velocity_(other.velocity_), width_(other.width_),
 	height_(other.height_), color_(other.color_)
 {
 }
@@ -55,6 +57,7 @@ unsigned int	Shape::getColor() const
 {
 	return (color_);
 }
+
 
 
 void	Shape::setWidth(float width)

@@ -6,7 +6,7 @@ OBJ_DIR = ./obj
 
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -I$(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
 LFLAGS = -lX11
 
 RM = rm -rf
@@ -15,7 +15,8 @@ RM = rm -rf
 SRC =	$(SRC_DIR)/main.cpp \
 		$(SRC_DIR)/MyWindow.cpp \
 		$(SRC_DIR)/Vector2D.cpp \
-		$(SRC_DIR)/Shape.cpp
+		$(SRC_DIR)/Shape.cpp \
+		$(SRC_DIR)/Rect.cpp
 
 OBJ =	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

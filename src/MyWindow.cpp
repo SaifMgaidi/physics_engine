@@ -1,4 +1,6 @@
 #include "../inc/MyWindow.hpp"
+#include "../inc/RenderContext.hpp"
+#include "../inc/Rect.hpp"
 
 // ---------------------Constructor-----------------------------------
 
@@ -66,23 +68,23 @@ void	MyWindow::clear(void)
 	memset(pixels_, 0, width_ * height_ * sizeof(u_int32_t));
 }
 
-void	MyWindow::display(void)
+void	MyWindow::display(Rect& r)
 {
-	int		x = width_ / 2;
-	int		y = height_ / 2;
-
 	clear();
-	if (x < width_ && x > -1 && y < height_ && y > -1)
-		pixels_[y * width_ + x] = 0x00FFFFFF;
+	r.draw();
 	XPutImage(dpy_, win_, GC_, img, 0, 0, 0, 0, width_, height_);
 }
 
 void	MyWindow::run(void)
 {
-	XEvent	event;
-	KeySym	key;
-	char	text[255];
-	int		running = 1;
+	XEvent			event;
+	KeySym			key;
+	char			text[255];
+	int				running = 1;
+	RenderContext	ctx(getPixels(), width_, height_);
+	Rect			r(ctx, 0, 0,
+						0, 0, 100.0f, 100.0f, 0xFFFFFFFF);
+
 
 	XMapWindow(dpy_, win_);
 	while (running)
@@ -103,7 +105,12 @@ void	MyWindow::run(void)
 					running = 0;
 			}
 		}
-		display();
+		display(r);
 		XFlush(dpy_);
 	}
+}
+
+uint32_t*	MyWindow::getPixels() const
+{
+	return (pixels_);
 }

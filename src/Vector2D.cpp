@@ -1,20 +1,19 @@
 #include "../inc/Vector2D.hpp"
 
-
-//---------------Constructor-----------------------
+//---------------Constructor------------------------------
 
 Vector2D::Vector2D()
-:	x_(0.0f), y_(0.0f)
+:	x(0), y(0)
 {
 }
 
-Vector2D::Vector2D(float x, float y)
-:	x_(x), y_(y)
+Vector2D::Vector2D(float a, float b)
+:	x(a), y(b)
 {
 }
 
 Vector2D::Vector2D(const Vector2D& other)
-:	x_(other.x_), y_(other.y_)
+:	x(other.x), y(other.y)
 {
 }
 
@@ -22,38 +21,39 @@ Vector2D&	Vector2D::operator=(const Vector2D& other)
 {
 	if (this != &other)
 	{
-		x_ = other.x_;
-		y_ = other.y_;
+		x = other.x;
+		y = other.y;
 	}
 	return (*this);
 }
 
 
-//---------------Destructor-----------------------
+//---------------Destructor------------------------------
 
 Vector2D::~Vector2D()
 {
 }
 
 
-//---------------Member Functions-----------------------
+
+//---------------Member Functions------------------------------
 
 float	Vector2D::getX() const
 {
-	return (x_);
+	return (x);
 }
 
 float	Vector2D::getY() const
 {
-	return (y_);
+	return (y);
 }
 
-void	Vector2D::setX(float x)
+void	Vector2D::setX(float a)
 {
-	x_ = x;
+	x = a;
 }
 
-void	Vector2D::setY(float y)
+void	Vector2D::setY(float a)
 {
-	y_ = y;
+	y = a;
 }

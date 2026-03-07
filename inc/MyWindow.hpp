@@ -7,6 +7,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
+#include "Rect.hpp"
 
 class MyWindow
 {
@@ -19,8 +20,9 @@ public:
 
 	// Member Functions
 	void		clear(void);
-	void		display(void);
+	void		display(Rect& r);
 	void		run(void);
+	uint32_t*	getPixels() const;
 private:
 	int			width_;
 	int			height_;
@@ -31,7 +33,7 @@ private:
 	Window		root_;
 	Window		win_;
 	Atom		wmDeleteMessage_;
-	u_int32_t	*pixels_;
+	uint32_t	*pixels_;
 	XImage*		img;
 	GC			GC_;
 };

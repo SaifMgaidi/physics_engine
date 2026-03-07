@@ -2,9 +2,12 @@
 
 int	main(void)
 {
+	int	width = 500;
+	int	height = 500;
+
 	try
 	{
-		MyWindow	win(500, 500);
+		MyWindow	win(width, height);
 		win.run();
 	}
 	catch(const std::exception& e)
