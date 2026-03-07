@@ -82,7 +82,7 @@ void	MyWindow::run(void)
 	char			text[255];
 	int				running = 1;
 	RenderContext	ctx(getPixels(), width_, height_);
-	Rect			r(ctx, 0, 0,
+	Rect			r(ctx, -50, -50,
 						0, 0, 100.0f, 100.0f, 0xFFFFFFFF);
 
 
