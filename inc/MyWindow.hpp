@@ -8,6 +8,7 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 #include "Rect.hpp"
+#include "Circle.hpp"
 
 class MyWindow
 {
@@ -20,7 +21,7 @@ public:
 
 	// Member Functions
 	void		clear(void);
-	void		display(Rect& r);
+	void		display(Rect& r, Circle& c);
 	void		run(void);
 	uint32_t*	getPixels() const;
 private:

@@ -1,6 +1,7 @@
 #include "../inc/MyWindow.hpp"
 #include "../inc/RenderContext.hpp"
 #include "../inc/Rect.hpp"
+#include "../inc/Circle.hpp"
 
 // ---------------------Constructor-----------------------------------
 
@@ -68,10 +69,11 @@ void	MyWindow::clear(void)
 	memset(pixels_, 0, width_ * height_ * sizeof(u_int32_t));
 }
 
-void	MyWindow::display(Rect& r)
+void	MyWindow::display(Rect& r, Circle& c)
 {
 	clear();
 	r.draw();
+	c.draw();
 	XPutImage(dpy_, win_, GC_, img, 0, 0, 0, 0, width_, height_);
 }
 
@@ -84,6 +86,7 @@ void	MyWindow::run(void)
 	RenderContext	ctx(getPixels(), width_, height_);
 	Rect			r(ctx, -50, -50,
 						0, 0, 100.0f, 100.0f, 0xFFFFFFFF);
+	Circle			c(ctx, 300, 300, 0, 0, 50, 0xFFFF0000);
 
 
 	XMapWindow(dpy_, win_);
@@ -105,7 +108,7 @@ void	MyWindow::run(void)
 					running = 0;
 			}
 		}
-		display(r);
+		display(r, c);
 		XFlush(dpy_);
 	}
 }

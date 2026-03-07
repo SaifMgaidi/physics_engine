@@ -16,7 +16,8 @@ SRC =	$(SRC_DIR)/main.cpp \
 		$(SRC_DIR)/MyWindow.cpp \
 		$(SRC_DIR)/Vector2D.cpp \
 		$(SRC_DIR)/Shape.cpp \
-		$(SRC_DIR)/Rect.cpp
+		$(SRC_DIR)/Rect.cpp \
+		$(SRC_DIR)/Circle.cpp
 
 OBJ =	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
