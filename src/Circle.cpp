@@ -43,17 +43,18 @@ Circle::~Circle()
 
 void	Circle::draw() const
 {
-	int	screenY			= 0;
-	int	screenX			= 0;
-	int	baseY			= static_cast<int>(pos_.y);
-	int	baseX			= static_cast<int>(pos_.x);
-	int	w				= static_cast<int>(radius_ * 2.0f);
-	int	h				= static_cast<int>(radius_ * 2.0f);
-	int	radius			= static_cast<int>(radius_);
-	int	currentLine		= 0;
-	int	currentPixel	= 0;
-	int	dx 				= 0;
-	int	dy				= 0;
+	int	screenY				= 0;
+	int	screenX				= 0;
+	int	screenXMirror		= 0;
+	int	baseY				= static_cast<int>(pos_.y);
+	int	baseX				= static_cast<int>(pos_.x);
+	int	h					= static_cast<int>(radius_ * 2.0f);
+	int	radius				= static_cast<int>(radius_);
+	int	currentLine			= 0;
+	int	currentPixel		= 0;
+	int	currentPixelMirror	= 0;
+	int	dx 					= 0;
+	int	dy					= 0;
 
 	for (int i = 0; i < h ; ++i)
 	{
@@ -61,7 +62,7 @@ void	Circle::draw() const
 		if (screenY < 0 || screenY >= ctx_.height)
 			continue;
 		currentLine = screenY * ctx_.width;
-		for (int j = 0; j < w; ++j)
+		for (int j = 0; j < radius; ++j)
 		{
 			screenX = baseX - radius + j;
 			if (screenX < 0 || screenX >= ctx_.width)
@@ -72,6 +73,11 @@ void	Circle::draw() const
 				continue;
 			currentPixel = currentLine + screenX;
 			ctx_.buff[currentPixel] = color_;
+			screenXMirror = baseX + radius - j;
+			if (screenXMirror < 0 || screenXMirror >= ctx_.width)
+				continue;
+			currentPixelMirror = currentLine + screenXMirror;
+			ctx_.buff[currentPixelMirror] = color_;
 		}
 	}
 }
