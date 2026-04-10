@@ -1,7 +1,5 @@
 #include "../inc/MyWindow.hpp"
 #include "../inc/RenderContext.hpp"
-#include "../inc/Rect.hpp"
-#include "../inc/Circle.hpp"
 
 // ---------------------Constructor-----------------------------------
 
@@ -45,6 +43,7 @@ MyWindow::MyWindow(int w, int h)
 		throw std::runtime_error("Create XImage failed");
 	}
 	GC_ = XDefaultGC(dpy_, scr_);
+	XMapWindow(dpy_, win_);
 }
 
 // ---------------------Destructor-----------------------------------
@@ -69,51 +68,22 @@ void	MyWindow::clear(void)
 	memset(pixels_, 0, width_ * height_ * sizeof(u_int32_t));
 }
 
-void	MyWindow::display(Rect& r, Circle& c)
+void	MyWindow::display()
 {
 	clear();
-	r.draw();
-	c.draw();
-	XPutImage(dpy_, win_, GC_, img, 0, 0, 0, 0, width_, height_);
-}
-
-void	MyWindow::run(void)
-{
-	XEvent			event;
-	KeySym			key;
-	char			text[255];
-	int				running = 1;
-	RenderContext	ctx(getPixels(), width_, height_);
-	Rect			r(ctx, -50, -50,
-						0, 0, 100.0f, 100.0f, 0xFFFFFFFF);
-	Circle			c(ctx, 300, 300, 0, 0, 50, 0xFFFF0000);
-
-
-	XMapWindow(dpy_, win_);
-	while (running)
-	{
-
-		while (XPending(dpy_) > 0)
-		{
-			XNextEvent(dpy_, &event);
-			if (event.type == ClientMessage)
-			{
-				if ((Atom)event.xclient.data.l[0] == wmDeleteMessage_)
-					running = 0;
-			}
-			if (event.type == KeyPress)
-			{
-				XLookupString(&event.xkey, text, 255, &key, NULL);
-				if (key == XK_Escape)
-					running = 0;
-			}
-		}
-		display(r, c);
-		XFlush(dpy_);
-	}
 }
 
 uint32_t*	MyWindow::getPixels() const
 {
 	return (pixels_);
+}
+
+Atom	MyWindow::getWmDeleteMessage() const
+{
+	return (wmDeleteMessage_);
+}
+
+Display*	MyWindow::getDpy() const
+{
+	return (dpy_);
 }

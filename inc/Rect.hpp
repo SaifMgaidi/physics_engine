@@ -18,7 +18,6 @@ public:
 	~Rect();
 
 	// Member Functions
-	void	draw() const override;
 private:
 };
 

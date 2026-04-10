@@ -59,6 +59,17 @@ unsigned int	Shape::getColor() const
 }
 
 
+Vector2D	Shape::getPosition() const
+{
+	return (pos_);
+}
+
+float	Shape::getRadius() const
+{
+	return (0.0f);
+}
+
+
 
 void	Shape::setWidth(float width)
 {

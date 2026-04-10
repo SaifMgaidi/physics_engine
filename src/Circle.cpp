@@ -41,43 +41,7 @@ Circle::~Circle()
 
 //--------------------Member Functions--------------------------------
 
-void	Circle::draw() const
+float	Circle::getRadius() const
 {
-	int	screenY				= 0;
-	int	screenX				= 0;
-	int	screenXMirror		= 0;
-	int	baseY				= static_cast<int>(pos_.y);
-	int	baseX				= static_cast<int>(pos_.x);
-	int	h					= static_cast<int>(radius_ * 2.0f);
-	int	radius				= static_cast<int>(radius_);
-	int	currentLine			= 0;
-	int	currentPixel		= 0;
-	int	currentPixelMirror	= 0;
-	int	dx 					= 0;
-	int	dy					= 0;
-
-	for (int i = 0; i < h ; ++i)
-	{
-		screenY = baseY - radius + i;
-		if (screenY < 0 || screenY >= ctx_.height)
-			continue;
-		currentLine = screenY * ctx_.width;
-		for (int j = 0; j < radius; ++j)
-		{
-			screenX = baseX - radius + j;
-			if (screenX < 0 || screenX >= ctx_.width)
-				continue;
-			dx = screenX - baseX;
-			dy = screenY - baseY;
-			if ((dx*dx) + (dy*dy) > radius*radius)
-				continue;
-			currentPixel = currentLine + screenX;
-			ctx_.buff[currentPixel] = color_;
-			screenXMirror = baseX + radius - j;
-			if (screenXMirror < 0 || screenXMirror >= ctx_.width)
-				continue;
-			currentPixelMirror = currentLine + screenXMirror;
-			ctx_.buff[currentPixelMirror] = color_;
-		}
-	}
+	return (radius_);
 }

@@ -7,8 +7,6 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#include "Rect.hpp"
-#include "Circle.hpp"
 
 class MyWindow
 {
@@ -20,10 +18,13 @@ public:
 	~MyWindow();
 
 	// Member Functions
-	void		clear(void);
-	void		display(Rect& r, Circle& c);
-	void		run(void);
+	void		clear();
+	void		display();
 	uint32_t*	getPixels() const;
+	int			getWidth() const;
+	int			getHeight() const;
+	Atom		getWmDeleteMessage() const;
+	Display*	getDpy() const;
 private:
 	int			width_;
 	int			height_;

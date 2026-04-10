@@ -19,7 +19,7 @@ public:
 	~Circle();
 
 	// Member Functions
-	void	draw() const override;
+	float	getRadius() const;
 private:
 	float	radius_;
 };

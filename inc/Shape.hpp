@@ -17,7 +17,7 @@ public:
 			float vy, float width, float height, uint32_t color);
 	Shape(const Shape& other);
 	Shape& operator=(const Shape& other);
-	
+
 	// Destructor
 	virtual ~Shape();
 
@@ -25,12 +25,12 @@ public:
 	float			getWidth() const;
 	float			getHeight() const;
 	unsigned int	getColor() const;
+	Vector2D		getPosition() const;
+	float			getRadius() const;
 
 	void			setWidth(float width);
 	void			setHeight(float height);
 	void			setColor(unsigned int color);
-
-	virtual void	draw() const = 0;
 
 protected:
 	RenderContext&	ctx_;
