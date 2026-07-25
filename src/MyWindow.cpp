@@ -30,7 +30,7 @@ MyWindow::MyWindow(int w, int h)
 	wmDeleteMessage_ = XInternAtom(dpy_, "WM_DELETE_WINDOW", false);
 	XSetWMProtocols(dpy_, win_, &wmDeleteMessage_, 1);
 
-	pixels_ = new u_int32_t[width_ * height_];
+	pixels_ = new u_int32_t[width_ * height_]();
 
 	img = XCreateImage(
 		dpy_, visual_, depth_, ZPixmap, 0, reinterpret_cast<char*>(pixels_),
@@ -86,4 +86,14 @@ Atom	MyWindow::getWmDeleteMessage() const
 Display*	MyWindow::getDpy() const
 {
 	return (dpy_);
+}
+
+int	MyWindow::getWidth() const
+{
+	return (width_);
+}
+
+int	MyWindow::getHeight() const
+{
+	return (height_);
 }

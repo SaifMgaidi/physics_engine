@@ -9,10 +9,8 @@ void	run(MyWindow& win)
 	int				running = 1;
 	RenderContext	ctx(win.getPixels(), win.getWidth(), win.getHeight());
 
-
 	while (running)
 	{
-
 		while (XPending(win.getDpy()) > 0)
 		{
 			XNextEvent(win.getDpy(), &event);
